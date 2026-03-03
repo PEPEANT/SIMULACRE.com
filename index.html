@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시뮬라크 — SIMULACRE</title>
+    <meta name="description" content="시뮬라크 가상 세계. 차연(差延)이 안내하는 공(空) 도시." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=JetBrains+Mono:wght@300;400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Snow + lantern particles -->
+    <canvas id="bg"></canvas>
+
+    <!-- NAV -->
+    <nav id="nav">
+      <a href="#hero" class="nav-logo">시뮬라크</a>
+      <div class="nav-right">
+        <a href="https://github.com/PEPEANT" target="_blank" rel="noreferrer" class="nav-link">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.youtube.com/@web3_Ant" target="_blank" rel="noreferrer" class="nav-link yt">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          @web3_Ant
+        </a>
+      </div>
+    </nav>
+
+    <!-- ── HERO: 세계 진입 ── -->
+    <section id="hero">
+      <div class="hero-bg">
+        <img src="./2.png" alt="시뮬라크 — 공(空) 도시" />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="world-sub-label" id="typewriter"></p>
+        <h1 class="world-title">시뮬라크</h1>
+        <p class="world-en">SIMULACRE</p>
+        <p class="world-bio">
+          시뮬라크 가상 세계에서 차연(差延)을 게임화해,<br />
+          에이전트 AI들과 공(空) 도시를 구축하는 설계자.
+        </p>
+        <a href="#emptines" class="enter-btn">
+          공(空) 도시로 진입 →
+        </a>
+      </div>
+      <div class="scroll-hint">
+        <span>scroll</span>
+        <div class="scroll-bar"></div>
+      </div>
+    </section>
+
+    <!-- ── 차연(差延): 캐릭터 소개 ── -->
+    <section id="chayon">
+      <div class="chayon-inner">
+        <div class="chayon-portrait">
+          <div class="portrait-frame">
+            <img src="./1.png" alt="차연(差延)" />
+          </div>
+        </div>
+        <div class="chayon-info">
+          <p class="sec-tag teal-c">CHARACTER</p>
+          <h2 class="chayon-title">차연<sub class="hanja">(差延)</sub></h2>
+          <p class="chayon-en">CHAYON · DIFFÉRANCE</p>
+          <p class="chayon-desc">
+            시뮬라크 가상 세계의 유희이자 캐릭터.<br />
+            데리다의 différance를 체현한 존재 —<br />
+            차이와 지연의 유희를 굴리는 자.
+          </p>
+          <div class="chayon-attrs">
+            <div class="attr-row">
+              <span class="attr-k">역할</span>
+              <span class="attr-v">공(空) 도시의 안내자 · 유희 설계자</span>
+            </div>
+            <div class="attr-row">
+              <span class="attr-k">특성</span>
+              <span class="attr-v teal-c">差延 · 差異 · 遊戱</span>
+            </div>
+            <div class="attr-row">
+              <span class="attr-k">소지품</span>
+              <span class="attr-v">우산 · 여우인형 · 언어</span>
+            </div>
+            <div class="attr-row">
+              <span class="attr-k">의상</span>
+              <span class="attr-v">미래 한복 (청색 · 적색 · 금)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EMPTINES: 공(空) 도시의 중심점 ── -->
+    <section id="emptines">
+      <div class="spawn-header">
+        <div class="spawn-badge">
+          <span class="spawn-num">SPAWN #00</span>
+          <span class="spawn-label">공(空) 도시의 처음 스폰 지점</span>
+        </div>
+      </div>
+      <div class="emptines-inner">
+        <div class="emptines-screens">
+          <div class="emptines-screen main-screen">
+            <img src="./cit.png" alt="공(空) 도시 — 실제 게임 뷰" />
+            <div class="screen-label emp-c">공(空) 도시 · 실제 진입 화면</div>
+          </div>
+          <div class="emptines-screen sub-screen">
+            <img src="./assets/emptines.png" alt="Emptines void" />
+            <div class="screen-label emp-c">대기실 · 중심점</div>
+          </div>
+        </div>
+        <div class="emptines-info">
+          <h2 class="emptines-title">EMPTINES</h2>
+          <blockquote class="emptines-quote">"이곳은 가상공간이다"</blockquote>
+          <p class="emptines-desc">
+            공(空) 도시에 처음 스폰되는 곳. 대기실이자 중심점.<br />
+            무기도, 전투도, 복잡한 지형도 없다.<br />
+            하늘과 땅만 있는 공허 속에서 플레이어들이 처음 만난다.
+          </p>
+          <ul class="emptines-list">
+            <li><span class="emp-c">▸</span> void 세계 — 하늘 + 지면만 존재</li>
+            <li><span class="emp-c">▸</span> 분필 드로잉 (B키, 5가지 색상)</li>
+            <li><span class="emp-c">▸</span> 실시간 플레이어 동기화</li>
+            <li><span class="emp-c">▸</span> 포털 시스템으로 다른 구역 이동</li>
+          </ul>
+          <div class="emptines-btns">
+            <a href="https://pepeant.github.io/-Emptines/" target="_blank" rel="noreferrer" class="btn-enter">
+              공(空) 도시 진입 ↗
+            </a>
+            <a href="https://github.com/PEPEANT/-Emptines" target="_blank" rel="noreferrer" class="btn-ghost">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WORLDS: 공(空) 도시의 구역들 ── -->
+    <section id="worlds">
+      <div class="worlds-inner">
+        <div class="worlds-header">
+          <p class="sec-tag gold-c">WORLDS</p>
+          <h2 class="worlds-title">공(空) 도시의 구역들</h2>
+          <p class="worlds-sub">차연이 안내하는 시뮬라크의 각 구역</p>
+        </div>
+        <div class="worlds-grid">
+
+          <!-- RECLAIM FPS -->
+          <article class="wc fps-wc">
+            <div class="wc-thumb">
+              <img src="./assets/reclaim.png" alt="RECLAIM FPS" loading="lazy" />
+            </div>
+            <div class="wc-body">
+              <div class="wc-zone">ZONE · 전투구역</div>
+              <h3>RECLAIM FPS</h3>
+              <p>복셀 세계에서 전투하고 건설하라. 이 도시의 전쟁 지구.</p>
+              <a href="https://github.com/PEPEANT/RECLAIM_FPS" target="_blank" rel="noreferrer" class="wc-link fps-c">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- SINGULARITY OX -->
+          <article class="wc ox-wc">
+            <div class="wc-thumb">
+              <img src="./assets/ox.png" alt="Singularity OX" loading="lazy" />
+            </div>
+            <div class="wc-body">
+              <div class="wc-zone">ZONE · 게이트웨이</div>
+              <h3>SINGULARITY OX</h3>
+              <p>Gateway-Worker 아키텍처. 무한 확장 가능한 시뮬라크의 근간.</p>
+              <a href="https://github.com/PEPEANT/singularity_ox" target="_blank" rel="noreferrer" class="wc-link ox-c">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- DIS SITE -->
+          <article class="wc dis-wc">
+            <div class="wc-thumb art-thumb" style="background:linear-gradient(135deg,#0e0520 0%,#060a18 100%)">
+              <span class="art-label" style="color:#a060ff">DIS</span>
+            </div>
+            <div class="wc-body">
+              <div class="wc-zone">ZONE · 게임 포털</div>
+              <h3>DIS SITE</h3>
+              <p>이 도시 안의 미니게임 포털. 작은 세계들이 모이는 장소.</p>
+              <a href="https://github.com/PEPEANT/dis-site" target="_blank" rel="noreferrer" class="wc-link" style="color:#a060ff">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- HANDICE -->
+          <article class="wc dice-wc">
+            <div class="wc-thumb art-thumb" style="background:linear-gradient(135deg,#100a02 0%,#080805 100%)">
+              <span class="art-label gold-c" style="font-size:2.5rem">⚄</span>
+            </div>
+            <div class="wc-body">
+              <div class="wc-zone">ZONE · 도박 구역</div>
+              <h3>HANDICE</h3>
+              <p>한강 다이스. 가상 자본주의 도시의 보드게임 구역.</p>
+              <a href="https://github.com/PEPEANT/HanDice" target="_blank" rel="noreferrer" class="wc-link gold-c">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- DICELAND -->
+          <article class="wc roulette-wc">
+            <div class="wc-thumb art-thumb" style="background:linear-gradient(135deg,#140404 0%,#080404 100%)">
+              <span class="art-label" style="color:#e74c3c;font-size:2rem">◉</span>
+            </div>
+            <div class="wc-body">
+              <div class="wc-zone">ZONE · 위험 구역</div>
+              <h3>DICELAND</h3>
+              <p>주사위와 러시안 룰렛이 만난 위험한 실험 구역.</p>
+              <a href="https://github.com/PEPEANT/diceland" target="_blank" rel="noreferrer" class="wc-link" style="color:#e74c3c">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- CAR GAME -->
+          <article class="wc car-wc">
+            <div class="wc-thumb art-thumb" style="background:linear-gradient(135deg,#030c1a 0%,#050810 100%)">
+              <span class="art-label" style="color:#3498db;font-size:2rem">⚡</span>
+            </div>
+            <div class="wc-body">
+              <div class="wc-zone">ZONE · 레이싱 구역</div>
+              <h3>CAR GAME</h3>
+              <p>이 도시의 고속도로를 달려라. 레이싱 프로토타입.</p>
+              <a href="https://github.com/PEPEANT/Cargame" target="_blank" rel="noreferrer" class="wc-link" style="color:#3498db">GitHub →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CREATOR: 설계자 ── -->
+    <section id="creator">
+      <div class="creator-inner">
+        <img
+          src="https://avatars.githubusercontent.com/u/198486806?v=4"
+          alt="PEPEANT"
+          class="creator-avatar"
+          loading="lazy"
+        />
+        <div class="creator-info">
+          <p class="sec-tag muted-c">DESIGNER · ARCHITECT</p>
+          <h2 class="creator-name">훈서기</h2>
+          <p class="creator-en">PEPEANT</p>
+          <p class="creator-vibe">바이브코딩</p>
+          <div class="creator-links">
+            <a href="https://github.com/PEPEANT" target="_blank" rel="noreferrer" class="cl">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              github.com/PEPEANT
+            </a>
+            <a href="https://www.youtube.com/@web3_Ant" target="_blank" rel="noreferrer" class="cl yt-cl">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              @web3_Ant
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <p class="foot-world teal-c">시뮬라크 · SIMULACRE</p>
+      <p class="foot-bio">
+        "시뮬라크 가상 세계에서 차연(差延)을 게임화해,<br />
+        에이전트 AI들과 공(空) 도시를 구축하는 설계자."
+      </p>
+      <p class="foot-c">&copy; <span id="year"></span> 훈서기 PEPEANT</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
