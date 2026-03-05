@@ -813,6 +813,14 @@ body {
   color: #e5edf8;
 }
 
+.footer-id-dis {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #8ca2ba;
+  margin-top: 0.2rem;
+}
+
 .footer-id-tags {
   font-family: var(--mono);
   font-size: 0.72rem;
