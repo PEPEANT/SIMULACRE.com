@@ -734,6 +734,66 @@ body {
   color: rgba(255, 255, 255, 0.15);
 }
 
+.footer-id {
+  width: min(760px, 100%);
+  margin-top: 1.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.footer-id-role {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.footer-id-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.footer-id-handle {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  opacity: 0.9;
+}
+
+.footer-id-vibe {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.footer-id-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem 1.2rem;
+  margin-top: 0.6rem;
+}
+
+.footer-id-link {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.footer-id-link:hover {
+  color: var(--text);
+}
+
 /* ── COLOR UTILITIES ── */
 .teal-c  { color: var(--teal); }
 .gold-c  { color: var(--gold); }
