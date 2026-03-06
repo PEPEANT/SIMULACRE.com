@@ -1,0 +1,185 @@
+mirror:
+  canonical_source: C:\Users\rneet\OneDrive\Desktop\UGC\ugc-rules.yaml
+  mirror_role: DIS_EM site/deploy reference
+  edit_policy: canonical-first
+version: 1
+language: ko
+
+repository:
+  name: UGC
+  type: design-source-of-truth
+  summary: >
+    시뮬라크 시티의 UGC 철학, 오브젝트 배치 원칙, 유저 흔적 규칙,
+    포탈 구조 해석을 보존하는 기준 저장소다.
+  is_code_repo: false
+  primary_goal: >
+    시뮬라크를 개별 게임 모음이 아니라 축적 가능한 세계 시스템으로 유지한다.
+
+document_priority:
+  - AGENTS.md
+  - ugc-rules.yaml
+  - SIMULACRA_UGC_PLATFORM.md
+
+external_references:
+  whitepaper:
+    path: C:\Users\rneet\OneDrive\Desktop\DIS\EM\WHITEPAPER.md
+    role: 장기 비전 기준서
+  world_lore:
+    path: C:\Users\rneet\OneDrive\Desktop\DIS\EM\WORLD_LORE.md
+    role: 세계관 운영 기준서
+  continuity_contract:
+    path: C:\Users\rneet\OneDrive\Desktop\DIS\EM\CONTINUITY_CONTRACT.md
+    role: 연속성 목표 계약
+  implementation_contract:
+    path: C:\Users\rneet\OneDrive\Desktop\DIS\EM\IMPLEMENTATION_CONTRACT.md
+    role: 구현 상태와 목표 구분 계약
+
+canonical_terms:
+  simulacra:
+    meaning: 본체 세계
+    description: 여러 콘텐츠를 품을 수 있는 세계 시스템
+  gong:
+    meaning: 시작 구역
+    description: 시뮬라크 내부의 0번 구역이자 시작과 선택의 공간
+  portal:
+    meaning: 교체 가능한 콘텐츠 관문
+    description: 본체가 아니라 모듈 연결 장치
+  object:
+    meaning: 흔적 매개체
+    description: 유저 존재와 창작을 세계에 남기는 수단
+  creation:
+    meaning: 작품 단위 저장물
+    description: 개별 오브젝트 묶음을 저장, 전시, 버전 관리하는 기본 단위
+  entity:
+    meaning: 행동 가능한 존재
+    description: 상태와 행위를 가지는 월드 존재
+  ai_module:
+    meaning: 엔티티 부착 지능 모듈
+    description: 엔티티의 판단, 안내, 상호작용을 담당하는 확장 모듈
+  ugc:
+    meaning: 축적 가능한 창작 구조
+    description: >
+      유저와 AI가 만든 것이 저장, 탐색, 복구, 재사용, 전시에 연결되는 구조
+
+core_model:
+  world_is_primary: true
+  events_are_replaceable: true
+  user_trace_is_asset: true
+  ai_is_future_co_creator: true
+  long_term_reference: DIS_EM
+  initial_product_identity: 3d_ugc_creation_city
+  core_loop:
+    - place
+    - save
+    - exhibit
+
+product_scope:
+  focus:
+    - create
+    - move
+    - rotate
+    - duplicate
+    - delete
+    - save
+    - load
+  rules:
+    - 초기 단계는 미니게임 확장보다 오브젝트 엔진 완성에 집중한다
+    - 전투, 이벤트, 미니게임은 확장 모듈이며 본체보다 앞서지 않는다
+
+world_tiers:
+  tiers:
+    workshop:
+      role: 생성과 수정
+    experimental_world:
+      role: 공개 검증과 피드백
+    main_world:
+      role: 승인된 창작물의 장기 정착
+  rules:
+    - 창작은 작업실에서 시작한다
+    - 검증은 실험 월드에서 수행한다
+    - 정착은 메인 월드에서 수행한다
+    - 메인 월드 반영은 자동이 아니라 승격 절차를 거친다
+
+creation_model:
+  storage_unit: creation
+  required_fields:
+    - owner
+    - version
+    - status
+    - objects
+  rules:
+    - 저장 기본 단위는 개별 오브젝트가 아니라 작품이다
+    - 작품은 전시, 복제, 롤백, 공유, 승격의 대상이 된다
+    - 오브젝트 목록은 작품 내부 구성 요소로 관리한다
+
+object_entity_ai_model:
+  rules:
+    - 오브젝트는 월드의 재료다
+    - 엔티티는 행동 가능한 존재다
+    - AI는 엔티티에 부착되는 모듈이다
+    - 오브젝트, 엔티티, AI 모듈을 같은 계층으로 혼동하지 않는다
+
+continuity_policy:
+  target_guarantees:
+    - 포털 이동은 재탄생이 아니라 상태 전환으로 취급한다
+    - 닉네임과 기본 프로필 문맥은 포털 이동 뒤에도 유지 또는 복원되어야 한다
+    - 작품의 owner, version, status, 전시 계보는 월드 이동 뒤에도 유지되어야 한다
+  current_known_gaps:
+    - 일부 빌드에서는 포털 이동 시 연결이 끊길 수 있다
+    - 일부 빌드에서는 닉네임을 다시 잡아야 할 수 있다
+  rule:
+    - 현재 구현 부채를 최종 정책으로 오해하지 않는다
+
+implementation_status_policy:
+  allowed_values:
+    - implemented
+    - partial
+    - planned
+  rules:
+    - planned 항목을 구현 완료처럼 서술하지 않는다
+    - partial 동작은 조건과 한계를 함께 기록한다
+    - 임시 우회 동작을 장기 정책으로 승격하지 않는다
+
+object_placement:
+  role: symbolic-and-systemic
+  rules:
+    - 오브젝트는 장식품이 아니라 흔적 단위로 본다
+    - 배치는 세계 안에 남는 의미를 가져야 한다
+    - 배치 결과는 나중에 저장, 복구, 전시 대상으로 연결될 수 있어야 한다
+    - 오브젝트는 본체 철학을 훼손하는 방향으로 사용하지 않는다
+
+portal_policy:
+  rules:
+    - 포탈은 장소 이동 장치가 아니라 도시 운영 상태를 나누는 구조적 인터페이스다
+    - 포탈은 본체와 분리 가능한 모듈이다
+    - 포탈 성패를 세계 전체 성패와 동일시하지 않는다
+    - 이벤트 종료가 세계 종료를 의미하지 않는다
+    - 실험 결과는 승격 없이 메인 월드로 전염되지 않는다
+
+trace_policy:
+  rules:
+    - 유저 흔적은 삭제 가능한 잡음이 아니라 관리 대상 자산이다
+    - 가능하면 작성자, 수정 이력, 복구 가능성을 함께 고려한다
+    - 만든 것이 세계 안에서 쓰임을 갖도록 설계한다
+
+agent_editing_policy:
+  allowed:
+    - 철학 문서 보강
+    - 기준 문서 구조화
+    - 정의 충돌 해소
+    - AI 오독 방지를 위한 명시 문장 추가
+    - DIS_EM 기준 문서와의 연결 문장 추가
+  disallowed:
+    - 구현 저장소로 단정하는 서술
+    - 시뮬라크를 단일 게임으로 축소하는 서술
+    - 공을 외부 로비로 분리하는 서술
+    - 오브젝트를 장식 요소로만 격하하는 서술
+    - 요청 없는 대규모 삭제
+
+default_interpretation:
+  when_unclear:
+    - 본체를 우선한다
+    - 축적 구조를 우선한다
+    - 선택권 보존을 우선한다
+    - 한국어 원문 의미 보존을 우선한다
+    - 장기 비전은 DIS_EM 기준 문서와 모순되지 않게 해석한다

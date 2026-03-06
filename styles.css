@@ -1,7 +1,6 @@
 /* =====================================================
-   시뮬라크 — SIMULACRE
-   Dark night Korean cyberpunk aesthetic
-   Character: 차연(差延)
+   시뮬라크 / DIS — SIMULACRE OPERATIONS HUB
+   Based on SIMULACRE.com design language
    ===================================================== */
 
 :root {
@@ -36,14 +35,14 @@ body {
   line-height: 1.65;
 }
 
-/* ── CANVAS (snow + lanterns float above everything) ── */
+/* ── CANVAS ── */
 #bg {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;       /* above all sections (z:1) — snow falls in front of content */
-  pointer-events: none; /* clicks/hover pass through to content below */
+  z-index: 10;
+  pointer-events: none;
 }
 
 /* ── NAV ── */
@@ -78,9 +77,6 @@ body {
 }
 
 .nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
   font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
@@ -90,7 +86,13 @@ body {
 }
 
 .nav-link:hover { color: var(--text); }
-.nav-link.yt:hover { color: #ff4444; }
+
+.nav-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  display: inline-block;
+}
 
 /* ── HERO ── */
 #hero {
@@ -116,7 +118,6 @@ body {
   display: block;
 }
 
-/* Gradient: dark on left for text, fade to transparent on right */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -222,7 +223,7 @@ body {
   50%       { opacity: 0.9; transform: scaleY(1.1); }
 }
 
-/* ── CHAYON (차연) SECTION ── */
+/* ── CHAYON ── */
 #chayon {
   position: relative;
   z-index: 1;
@@ -255,16 +256,11 @@ body {
   object-fit: cover;
 }
 
-/* Subtle teal glow overlay on portrait */
 .portrait-frame::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 60%,
-    rgba(0, 196, 164, 0.08) 100%
-  );
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 196, 164, 0.08) 100%);
   pointer-events: none;
 }
 
@@ -289,32 +285,23 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--mono) !important;
-  font-size: 0.69rem !important;
+  font-family: var(--mono);
+  font-size: 0.69rem;
   font-weight: 600;
-  line-height: 1;
   letter-spacing: 0.15em;
-  text-decoration: none !important;
-  color: #83f2df !important;
+  text-decoration: none;
+  color: #83f2df;
   border: 1px solid rgba(0, 196, 164, 0.38);
   border-radius: 999px;
   padding: 0.42rem 0.78rem;
-  transform: translateY(0.05rem);
   background: rgba(0, 196, 164, 0.08);
   transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
 .chayon-channel-link:hover {
-  color: #ecf7ff !important;
+  color: #ecf7ff;
   border-color: rgba(0, 196, 164, 0.45);
   background: rgba(0, 196, 164, 0.18);
-}
-
-.hanja {
-  font-size: 0.5em;
-  vertical-align: middle;
-  color: var(--teal);
-  font-style: normal;
 }
 
 .chayon-en {
@@ -358,12 +345,9 @@ body {
   letter-spacing: 0.05em;
 }
 
-.attr-v {
-  color: var(--text);
-  line-height: 1.5;
-}
+.attr-v { color: var(--text); line-height: 1.5; }
 
-/* ── EMPTINES SECTION ── */
+/* ── EMPTINES ── */
 #emptines {
   position: relative;
   z-index: 1;
@@ -410,7 +394,6 @@ body {
   align-items: center;
 }
 
-/* Two-screenshot layout */
 .emptines-screens {
   display: flex;
   flex-direction: column;
@@ -429,9 +412,7 @@ body {
   display: block;
 }
 
-.main-screen {
-  box-shadow: 0 0 60px rgba(0, 196, 164, 0.15);
-}
+.main-screen { box-shadow: 0 0 60px rgba(0, 196, 164, 0.15); }
 
 .sub-screen {
   opacity: 0.75;
@@ -535,7 +516,7 @@ body {
 
 .btn-ghost:hover { background: rgba(0, 196, 164, 0.08); }
 
-/* ── WORLDS SECTION ── */
+/* ── WORLDS / ZONES ── */
 #worlds {
   position: relative;
   z-index: 1;
@@ -573,7 +554,6 @@ body {
   gap: 1.2rem;
 }
 
-/* World cards */
 .wc {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -584,12 +564,12 @@ body {
 
 .wc:hover { transform: translateY(-4px); }
 
-.fps-wc:hover     { border-color: rgba(255,85,51,0.4);  box-shadow: 0 8px 40px rgba(255,85,51,0.1); }
-.ox-wc:hover      { border-color: rgba(0,240,144,0.35); box-shadow: 0 8px 40px rgba(0,240,144,0.1); }
-.dis-wc:hover     { border-color: rgba(160,96,255,0.35);box-shadow: 0 8px 40px rgba(160,96,255,0.1); }
-.dice-wc:hover    { border-color: rgba(212,146,42,0.4); box-shadow: 0 8px 40px rgba(212,146,42,0.1); }
-.roulette-wc:hover{ border-color: rgba(231,76,60,0.4);  box-shadow: 0 8px 40px rgba(231,76,60,0.1); }
-.car-wc:hover     { border-color: rgba(52,152,219,0.35);box-shadow: 0 8px 40px rgba(52,152,219,0.1); }
+.fps-wc:hover     { border-color: rgba(255,85,51,0.4);   box-shadow: 0 8px 40px rgba(255,85,51,0.1); }
+.ox-wc:hover      { border-color: rgba(0,240,144,0.35);  box-shadow: 0 8px 40px rgba(0,240,144,0.1); }
+.dis-wc:hover     { border-color: rgba(160,96,255,0.35); box-shadow: 0 8px 40px rgba(160,96,255,0.1); }
+.dice-wc:hover    { border-color: rgba(212,146,42,0.4);  box-shadow: 0 8px 40px rgba(212,146,42,0.1); }
+.roulette-wc:hover{ border-color: rgba(231,76,60,0.4);   box-shadow: 0 8px 40px rgba(231,76,60,0.1); }
+.car-wc:hover     { border-color: rgba(52,152,219,0.35); box-shadow: 0 8px 40px rgba(52,152,219,0.1); }
 
 .wc-thumb {
   width: 100%;
@@ -623,9 +603,7 @@ body {
   opacity: 0.6;
 }
 
-.wc-body {
-  padding: 1.1rem;
-}
+.wc-body { padding: 1.1rem; }
 
 .wc-zone {
   font-family: var(--mono);
@@ -660,7 +638,97 @@ body {
 
 .wc-link:hover { opacity: 0.7; }
 
-/* ── CREATOR SECTION ── */
+/* ── DOCS ── */
+#docs {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--night);
+}
+
+.docs-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 0;
+}
+
+.doc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.4rem;
+  transition: border-color 0.25s, transform 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 146, 42, 0.3);
+}
+
+.doc-type {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 0.55rem;
+}
+
+.doc-card h3 {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+.doc-card p {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.doc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.doc-tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.52rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-t);
+  color: var(--teal);
+  background: rgba(0, 196, 164, 0.06);
+}
+
+.doc-link {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--teal);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  margin-top: auto;
+}
+
+.doc-link:hover { opacity: 0.7; }
+
+/* ── CREATOR / ROADMAP ── */
 #creator {
   position: relative;
   z-index: 1;
@@ -719,9 +787,6 @@ body {
 }
 
 .cl {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
   font-family: var(--mono);
   font-size: 0.75rem;
   text-decoration: none;
@@ -730,7 +795,57 @@ body {
 }
 
 .cl:hover { color: var(--text); }
-.yt-cl:hover { color: #ff4444; }
+
+/* ── LOG / TIMELINE ── */
+#log {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--night) 0%, var(--bg) 100%);
+}
+
+.log-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.timeline {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.timeline-date {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  padding-top: 0.25rem;
+}
+
+.timeline-body h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.timeline-body p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
 
 /* ── FOOTER ── */
 #footer {
@@ -797,10 +912,7 @@ body {
   box-shadow: 0 0 25px rgba(0, 196, 164, 0.2);
 }
 
-.footer-id-avatar-link {
-  display: inline-block;
-  line-height: 0;
-}
+.footer-id-avatar-link { display: inline-block; line-height: 0; }
 
 .footer-id-copy {
   display: flex;
@@ -879,11 +991,9 @@ body {
   transition: color 0.2s;
 }
 
-.footer-id-link:hover {
-  color: #d7e3f2;
-}
+.footer-id-link:hover { color: #d7e3f2; }
 
-/* ── COLOR UTILITIES ── */
+/* ── UTILITIES ── */
 .teal-c  { color: var(--teal); }
 .gold-c  { color: var(--gold); }
 .emp-c   { color: var(--emp);  }
@@ -891,7 +1001,6 @@ body {
 .ox-c    { color: var(--ox);   }
 .muted-c { color: var(--muted); }
 
-/* ── SECTION TAGS ── */
 .sec-tag {
   font-family: var(--mono);
   font-size: 0.68rem;
@@ -900,7 +1009,7 @@ body {
   display: block;
 }
 
-/* ── SCROLL REVEAL ── */
+/* ── REVEAL ── */
 .reveal-up {
   opacity: 0;
   transform: translateY(28px);
@@ -916,7 +1025,8 @@ body {
 @media (max-width: 1100px) {
   .chayon-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
   .emptines-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-  .worlds-grid { grid-template-columns: repeat(2, 1fr); }
+  .worlds-grid,
+  .docs-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -931,19 +1041,23 @@ body {
     text-align: center;
     padding: 1.35rem 1rem;
   }
-  .footer-id-links {
-    justify-content: center;
-  }
+  .footer-id-links { justify-content: center; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 
 @media (max-width: 640px) {
   #nav { padding: 0.8rem 1.2rem; }
+  .nav-right { gap: 1rem; }
+  .nav-sep { display: none; }
   .hero-content { padding: 7rem 1.5rem 4rem; }
   .chayon-inner,
   .emptines-inner,
   .worlds-inner,
+  .docs-inner,
+  .log-inner,
   .creator-inner { padding: 0 1.5rem; }
-  #worlds, #chayon, #emptines, #creator { padding: 5rem 0; }
-  .worlds-grid { grid-template-columns: 1fr; }
+  #worlds, #chayon, #emptines, #creator, #docs, #log { padding: 5rem 0; }
+  .worlds-grid,
+  .docs-grid { grid-template-columns: 1fr; }
   .scroll-hint { display: none; }
 }

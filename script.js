@@ -1,222 +1,157 @@
-﻿/* =====================================================
-   SIMULACRE script.js
-   Snow + lantern particles, typewriter, reveal effects
-   ===================================================== */
-
 (function initParticles() {
-  const canvas = document.getElementById('bg');
-  if (!canvas || typeof THREE === 'undefined') return;
+  const canvas = document.getElementById("bg");
+  if (!canvas || typeof THREE === "undefined") return;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 200);
+  const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 200);
   camera.position.set(0, 0, 50);
-  camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
-  renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
-  const SNOW = 1200;
-  const snowPos = new Float32Array(SNOW * 3);
-  const snowVel = new Float32Array(SNOW);
-  const snowSwg = new Float32Array(SNOW);
+  const particleCount = 520;
+  const positions = new Float32Array(particleCount * 3);
+  const velocities = new Float32Array(particleCount);
 
-  for (let i = 0; i < SNOW; i++) {
-    snowPos[i * 3] = (Math.random() - 0.5) * 100;
-    snowPos[i * 3 + 1] = (Math.random() - 0.5) * 80;
-    snowPos[i * 3 + 2] = (Math.random() - 0.5) * 30;
-    snowVel[i] = 0.008 + Math.random() * 0.014;
-    snowSwg[i] = Math.random() * Math.PI * 2;
+  for (let index = 0; index < particleCount; index += 1) {
+    positions[index * 3] = (Math.random() - 0.5) * 110;
+    positions[index * 3 + 1] = (Math.random() - 0.5) * 95;
+    positions[index * 3 + 2] = (Math.random() - 0.5) * 30;
+    velocities[index] = 0.01 + Math.random() * 0.02;
   }
 
-  const snowGeo = new THREE.BufferGeometry();
-  snowGeo.setAttribute('position', new THREE.BufferAttribute(snowPos, 3));
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-  const snowMat = new THREE.PointsMaterial({
-    color: 0xd8f0f8,
-    size: 0.18,
+  const material = new THREE.PointsMaterial({
+    color: 0x7ce1cc,
+    size: 0.14,
     transparent: true,
-    opacity: 0.55,
+    opacity: 0.3,
     sizeAttenuation: true,
   });
 
-  const snowPoints = new THREE.Points(snowGeo, snowMat);
-  scene.add(snowPoints);
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
 
-  const LANTERN = 45;
-  const lanPos = new Float32Array(LANTERN * 3);
-  const lanVel = new Float32Array(LANTERN);
-  const lanSwg = new Float32Array(LANTERN);
+  let pointerX = 0;
+  let pointerY = 0;
 
-  for (let i = 0; i < LANTERN; i++) {
-    lanPos[i * 3] = (Math.random() - 0.5) * 90;
-    lanPos[i * 3 + 1] = (Math.random() - 0.5) * 80;
-    lanPos[i * 3 + 2] = (Math.random() - 0.5) * 25 - 5;
-    lanVel[i] = 0.015 + Math.random() * 0.02;
-    lanSwg[i] = Math.random() * Math.PI * 2;
-  }
-
-  const lanGeo = new THREE.BufferGeometry();
-  lanGeo.setAttribute('position', new THREE.BufferAttribute(lanPos, 3));
-
-  const lanMat = new THREE.PointsMaterial({
-    color: 0xd4922a,
-    size: 0.45,
-    transparent: true,
-    opacity: 0.5,
-    sizeAttenuation: true,
+  window.addEventListener("mousemove", (event) => {
+    pointerX = (event.clientX / window.innerWidth - 0.5) * 2;
+    pointerY = (event.clientY / window.innerHeight - 0.5) * 2;
   });
 
-  const lanPoints = new THREE.Points(lanGeo, lanMat);
-  scene.add(lanPoints);
+  function animate() {
+    requestAnimationFrame(animate);
 
-  let mx = 0;
-  let my = 0;
-  document.addEventListener('mousemove', (e) => {
-    mx = (e.clientX / innerWidth - 0.5) * 2;
-    my = (e.clientY / innerHeight - 0.5) * 2;
-  });
-
-  let t = 0;
-
-  function tick() {
-    requestAnimationFrame(tick);
-    t += 0.016;
-
-    const sPos = snowGeo.attributes.position.array;
-    for (let i = 0; i < SNOW; i++) {
-      sPos[i * 3 + 1] -= snowVel[i];
-      sPos[i * 3] += Math.sin(t * 0.4 + snowSwg[i]) * 0.003;
-      if (sPos[i * 3 + 1] < -40) {
-        sPos[i * 3 + 1] = 40;
-        sPos[i * 3] = (Math.random() - 0.5) * 100;
+    const buffer = geometry.attributes.position.array;
+    for (let index = 0; index < particleCount; index += 1) {
+      buffer[index * 3 + 1] -= velocities[index];
+      if (buffer[index * 3 + 1] < -50) {
+        buffer[index * 3 + 1] = 50;
       }
     }
-    snowGeo.attributes.position.needsUpdate = true;
+    geometry.attributes.position.needsUpdate = true;
 
-    const lPos = lanGeo.attributes.position.array;
-    for (let i = 0; i < LANTERN; i++) {
-      lPos[i * 3 + 1] += lanVel[i];
-      lPos[i * 3] += Math.sin(t * 0.5 + lanSwg[i]) * 0.005;
-      if (lPos[i * 3 + 1] > 42) {
-        lPos[i * 3 + 1] = -42;
-        lPos[i * 3] = (Math.random() - 0.5) * 90;
-      }
-    }
-    lanGeo.attributes.position.needsUpdate = true;
-
-    camera.position.x += (mx * 2 - camera.position.x) * 0.01;
-    camera.position.y += (-my - camera.position.y) * 0.01;
+    camera.position.x += (pointerX * 1.8 - camera.position.x) * 0.015;
+    camera.position.y += (-pointerY * 1.2 - camera.position.y) * 0.015;
     camera.lookAt(0, 0, 0);
 
     renderer.render(scene, camera);
   }
 
-  tick();
+  animate();
 
-  window.addEventListener('resize', () => {
-    camera.aspect = innerWidth / innerHeight;
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(innerWidth, innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight);
   });
 })();
 
 (function typewriter() {
-  const el = document.getElementById('typewriter');
-  if (!el) return;
+  const element = document.getElementById("typewriter");
+  if (!element) return;
 
-  const text = '세계관 운영 기준 로딩 중';
-  let i = 0;
+  const text = "2045년, 공과 시뮬라크는 AI와 인간이 공존하는 도시로 진화한다";
+  let index = 0;
 
-  function type() {
-    if (i <= text.length) {
-      el.textContent = text.slice(0, i) + (i < text.length ? '|' : '');
-      i += 1;
-      setTimeout(type, i === 1 ? 800 : 80);
-    } else {
-      el.textContent = text;
-      let vis = true;
-      setInterval(() => {
-        el.textContent = text + (vis ? '|' : '');
-        vis = !vis;
-      }, 700);
+  function tick() {
+    if (index <= text.length) {
+      element.textContent = `${text.slice(0, index)}${index < text.length ? "|" : ""}`;
+      index += 1;
+      window.setTimeout(tick, index === 1 ? 450 : 45);
+      return;
     }
+
+    element.textContent = text;
+    let visible = true;
+    window.setInterval(() => {
+      element.textContent = `${text}${visible ? "|" : ""}`;
+      visible = !visible;
+    }, 650);
   }
 
-  setTimeout(type, 400);
+  window.setTimeout(tick, 250);
 })();
 
-(function scrollReveal() {
-  const obs = new IntersectionObserver(
+(function revealOnScroll() {
+  const elements = document.querySelectorAll(".reveal-up");
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.12 }
   );
 
-  const singles = document.querySelectorAll(
-    '.chayon-portrait, .chayon-info, .spawn-badge, .emptines-screens, .emptines-info, .worlds-header, .creator-inner, .foot-world, .foot-bio'
+  elements.forEach((element) => observer.observe(element));
+})();
+
+(function navSectionState() {
+  const links = Array.from(document.querySelectorAll(".nav-link"));
+  const sectionIds = links
+    .map((link) => link.getAttribute("href"))
+    .filter((href) => href && href.startsWith("#"))
+    .map((href) => href.slice(1));
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const activeLinkById = new Map(
+    links.map((link) => [link.getAttribute("href")?.slice(1), link])
   );
 
-  singles.forEach((el) => {
-    el.classList.add('reveal-up');
-    obs.observe(el);
-  });
-
-  let cardIdx = 0;
-  document.querySelectorAll('.wc').forEach((card) => {
-    card.classList.add('reveal-up');
-    card.style.transitionDelay = `${(cardIdx % 3) * 0.12}s`;
-    cardIdx += 1;
-    obs.observe(card);
-  });
-})();
-
-(function cardHover() {
-  document.querySelectorAll('.wc').forEach((card) => {
-    const zone = card.querySelector('.wc-zone');
-    if (!zone) return;
-
-    card.addEventListener('mouseenter', () => {
-      zone.style.opacity = '1';
-    });
-
-    card.addEventListener('mouseleave', () => {
-      zone.style.opacity = '';
-    });
-  });
-})();
-
-(function navHighlight() {
-  const sections = document.querySelectorAll('#hero, #chayon, #emptines, #worlds, #creator');
-  const logo = document.querySelector('.nav-logo');
-
-  const colors = {
-    hero: '#00c4a4',
-    chayon: '#00c4a4',
-    emptines: '#00c4a4',
-    worlds: '#d4922a',
-    creator: '#d4922a',
-  };
-
-  const obs = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.3 && logo && colors[entry.target.id]) {
-          logo.style.color = colors[entry.target.id];
-        }
-      });
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+
+      if (!visible) return;
+
+      links.forEach((link) => link.classList.remove("is-active"));
+      activeLinkById.get(visible.target.id)?.classList.add("is-active");
     },
-    { threshold: 0.3 }
+    {
+      rootMargin: "-35% 0px -45% 0px",
+      threshold: [0.15, 0.35, 0.6],
+    }
   );
 
-  sections.forEach((section) => obs.observe(section));
+  sections.forEach((section) => observer.observe(section));
 })();
 
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+const yearElement = document.getElementById("year");
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}

@@ -1,13 +1,14 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>시뮬라크 운영 기준</title>
+    <title>시뮬라크 / DIS</title>
     <meta
       name="description"
-      content="공(Emptines)과 시뮬라크의 차연 소개, 구역 구조, 장기 로드맵을 정리한 기준 페이지"
+      content="공(Emptines)과 시뮬라크의 차연 소개, 구역 구조, 정본 문서, 운영 로그를 정리한 기준 허브"
     />
+    <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=JetBrains+Mono:wght@300;400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap"
@@ -23,6 +24,9 @@
       <div class="nav-right">
         <a href="./WHITEPAPER.md" target="_blank" rel="noreferrer" class="nav-link">WHITEPAPER</a>
         <a href="./WORLD_LORE.md" target="_blank" rel="noreferrer" class="nav-link">WORLD LORE</a>
+        <span class="nav-sep"></span>
+        <a href="#docs" class="nav-link">문서</a>
+        <a href="#log" class="nav-link">로그</a>
       </div>
     </nav>
 
@@ -223,6 +227,101 @@
       </div>
     </section>
 
+    <section id="docs">
+      <div class="docs-inner">
+        <div class="worlds-header">
+          <p class="sec-tag teal-c">CANONICAL DOCUMENTS</p>
+          <h2 class="worlds-title">정본 문서</h2>
+          <p class="worlds-sub">장기 비전은 백서에, 공간과 운영은 세계관 문서에, 연속성과 구현 상태는 계약 문서에 고정한다.</p>
+        </div>
+        <div class="docs-grid">
+          <article class="doc-card">
+            <p class="doc-type">VISION</p>
+            <h3>WHITEPAPER</h3>
+            <p>2045년까지의 공존 도시 비전, 설계 원칙, 제품 정체성을 정리한 장기 기준서.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">장기 비전</span>
+              <span class="doc-tag">설계 원칙</span>
+              <span class="doc-tag">제품 정체성</span>
+            </div>
+            <a href="./WHITEPAPER.md" target="_blank" rel="noreferrer" class="doc-link">문서 열기 →</a>
+          </article>
+
+          <article class="doc-card">
+            <p class="doc-type">WORLD</p>
+            <h3>WORLD LORE</h3>
+            <p>공과 시뮬라크의 동선, 구역 의미, UI 문구, 운영 체크포인트를 관리하는 운영 기준서.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">공간 흐름</span>
+              <span class="doc-tag">운영 문구</span>
+              <span class="doc-tag">AI 가이드</span>
+            </div>
+            <a href="./WORLD_LORE.md" target="_blank" rel="noreferrer" class="doc-link">문서 열기 →</a>
+          </article>
+
+          <article class="doc-card">
+            <p class="doc-type">BRIDGE</p>
+            <h3>UGC REFERENCE</h3>
+            <p>이 저장소와 외부 UGC 원본 저장소의 관계를 고정하는 브리지 문서.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">미러 원칙</span>
+              <span class="doc-tag">원본 경로</span>
+              <span class="doc-tag">역할 구분</span>
+            </div>
+            <a href="./UGC_REFERENCE.md" target="_blank" rel="noreferrer" class="doc-link">문서 열기 →</a>
+          </article>
+
+          <article class="doc-card">
+            <p class="doc-type">CONTRACT</p>
+            <h3>CONTINUITY CONTRACT</h3>
+            <p>포털, 닉네임, 세션, 작품이 이동 뒤에도 같은 계보로 이어져야 한다는 목표 계약.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">플레이어 연속성</span>
+              <span class="doc-tag">세션 복원</span>
+              <span class="doc-tag">작품 계보</span>
+            </div>
+            <a href="./CONTINUITY_CONTRACT.md" target="_blank" rel="noreferrer" class="doc-link">문서 열기 →</a>
+          </article>
+
+          <article class="doc-card">
+            <p class="doc-type">CONTRACT</p>
+            <h3>IMPLEMENTATION CONTRACT</h3>
+            <p>목표 상태와 현재 구현 상태를 섞어 말하지 않도록 상태 표기와 우선순위를 구분하는 계약서.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">implemented</span>
+              <span class="doc-tag">partial</span>
+              <span class="doc-tag">planned</span>
+            </div>
+            <a href="./IMPLEMENTATION_CONTRACT.md" target="_blank" rel="noreferrer" class="doc-link">문서 열기 →</a>
+          </article>
+
+          <article class="doc-card">
+            <p class="doc-type">EXPORT</p>
+            <h3>EXPORT RULES</h3>
+            <p>EM 정본 문서를 소비 저장소로 내보낼 때 따르는 미러 헤더와 동기화 규칙을 정의한다.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">EM 정본 우선</span>
+              <span class="doc-tag">미러 헤더</span>
+              <span class="doc-tag">export 체크리스트</span>
+            </div>
+            <a href="./EXPORT_RULES.md" target="_blank" rel="noreferrer" class="doc-link">문서 열기 →</a>
+          </article>
+
+          <article class="doc-card">
+            <p class="doc-type">UGC MIRROR</p>
+            <h3>UGC RULES</h3>
+            <p>UGC 해석의 고정 규칙과 용어 사전을 담는 미러 기준. 개념 중복이 생기면 이 축으로 다시 정렬한다.</p>
+            <div class="doc-tags">
+              <span class="doc-tag">정의 사전</span>
+              <span class="doc-tag">코어 모델</span>
+              <span class="doc-tag">승격 규칙</span>
+            </div>
+            <a href="./docs/ugc/ugc-rules.yaml" target="_blank" rel="noreferrer" class="doc-link">규칙 열기 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="creator">
       <div class="creator-inner">
         <img src="./3.png" alt="로드맵 시각 자료" class="creator-avatar" loading="lazy" />
@@ -240,21 +339,61 @@
       </div>
     </section>
 
+    <section id="log">
+      <div class="log-inner">
+        <div class="worlds-header">
+          <p class="sec-tag muted-c">UPDATE LOG</p>
+          <h2 class="worlds-title">변경은 기록한다</h2>
+          <p class="worlds-sub">무엇이 왜 바뀌었는지 남기는 장부. 기준을 갱신할 때마다 이유와 맥락을 여기에 쌓는다.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-date">2026-03-06</p>
+            <div class="timeline-body">
+              <h3>EM 정본 우선과 export 계약 반영</h3>
+              <p>AGENTS, Export Rules, 연속성 계약, 구현 계약을 허브에 포함해 EM이 정본 저장소라는 점을 구조적으로 드러낸다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-date">2026-03-06</p>
+            <div class="timeline-body">
+              <h3>홈페이지를 카테고리 허브 구조로 전환</h3>
+              <p>랜딩 한 장 안에서 세계 소개, 정본, 실험, 로그를 분리해 문서가 늘어나도 구조가 버티도록 재편한다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-date">2026-03-05</p>
+            <div class="timeline-body">
+              <h3>장기 설계 백서 기준일 고정</h3>
+              <p>2045년 3월 5일을 장기 목표 시점으로 두고, 공존 중심 메타도시 비전을 정본으로 고정한다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-date">2026-03-05</p>
+            <div class="timeline-body">
+              <h3>운영 세계관과 UGC 해석 축 정렬</h3>
+              <p>공은 관문, 시뮬라크는 본체 세계, 포탈은 교체 가능한 모듈이라는 해석을 운영 문서와 UGC 문서에서 함께 고정한다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer id="footer">
       <p class="foot-world teal-c">시뮬라크</p>
       <p class="foot-bio">운영 기준: 선택권 우선, 설명 가능한 AI, 공정한 경제, 공존 가능한 도시.</p>
-      <p class="foot-c">&copy; <span id="year"></span> SIMULACRE OPERATIONS</p>
+      <p class="foot-c">&copy; <span id="year"></span> SIMULACRE / DIS OPERATIONS</p>
       <div class="footer-id">
         <div class="footer-id-main">
           <a href="https://github.com/PEPEANT" target="_blank" rel="noreferrer" class="footer-id-avatar-link">
             <img src="https://github.com/PEPEANT.png" alt="GitHub 프로필 아바타" class="footer-id-avatar" loading="lazy" />
           </a>
-            <div class="footer-id-copy">
-              <p class="footer-id-role">DESIGNER · ARCHITECT</p>
-              <p class="footer-id-name">훈서기</p>
-              <p class="footer-id-dis">DIS 디지털 인터페이스 네트워크</p>
-              <p class="footer-id-tags">#바이브코딩 · #공의개념 · #포스트모더니즘 · #해체주의</p>
-              <p class="footer-id-handle">PEPEANT</p>
+          <div class="footer-id-copy">
+            <p class="footer-id-role">DESIGNER · ARCHITECT</p>
+            <p class="footer-id-name">훈서기</p>
+            <p class="footer-id-dis">DIS 디지털 인터페이스 네트워크</p>
+            <p class="footer-id-tags">#바이브코딩 · #공의개념 · #포스트모더니즘 · #해체주의</p>
+            <p class="footer-id-handle">PEPEANT</p>
             <p class="footer-id-vibe">바이브코딩</p>
             <div class="footer-id-links">
               <a href="https://github.com/PEPEANT" target="_blank" rel="noreferrer" class="footer-id-link">github.com/PEPEANT</a>
@@ -274,4 +413,3 @@
     <script src="./script.js"></script>
   </body>
 </html>
-
